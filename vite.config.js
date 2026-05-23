@@ -1,14 +1,7 @@
-AgentCup/
-├─ package.json
-├─ vite.config.js
-├─ index.html
-├─ src/
-│  ├─ main.jsx
-│  ├─ App.jsx
-│  ├─ index.css
-│  ├─ utils/
-│  │  └─ storage.js
-│  └─ pages/
-│     ├─ TeamSetupPage.jsx
-│     ├─ ScoreEntryPage.jsx
-│     └─ DashboardPage.jsx
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/team-dashboard/'
+})
