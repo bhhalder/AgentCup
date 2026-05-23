@@ -4,106 +4,260 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Agent Cup Leader Dashboard</title>
-    <meta name="description" content="Agent Cup Leader Dashboard" />
+    <meta
+      name="description"
+      content="A deployed GitHub Pages landing page for the Agent Cup Leader Dashboard."
+    />
     <style>
       :root {
-        color-scheme: light dark;
-        --bg: #0b1020;
-        --card: rgba(255,255,255,0.08);
-        --text: #f5f7ff;
-        --muted: #b8c0ff;
-        --accent: #7c9cff;
-        --border: rgba(255,255,255,0.12);
+        --bg: #0f172a;
+        --panel: #111827;
+        --panel-2: #1f2937;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --accent: #38bdf8;
+        --accent-2: #22c55e;
+        --border: rgba(255, 255, 255, 0.08);
+        --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
       }
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #f5f7ff;
-          --card: #ffffff;
-          --text: #111827;
-          --muted: #4b5563;
-          --accent: #2563eb;
-          --border: rgba(17,24,39,0.08);
-        }
+
+      * {
+        box-sizing: border-box;
       }
-      * { box-sizing: border-box; }
+
       body {
         margin: 0;
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-        background: radial-gradient(circle at top, rgba(124,156,255,0.18), transparent 35%), var(--bg);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 30%),
+          radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.14), transparent 25%),
+          var(--bg);
         color: var(--text);
         min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
       }
-      main {
-        width: min(860px, 100%);
-        background: var(--card);
+
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 56px;
+      }
+
+      .hero {
+        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
         border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 40px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: var(--shadow);
       }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(56, 189, 248, 0.14);
+        color: var(--accent);
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        margin-bottom: 18px;
+      }
+
       h1 {
         margin: 0 0 12px;
-        font-size: clamp(2rem, 6vw, 3.5rem);
+        font-size: clamp(2.25rem, 5vw, 4rem);
         line-height: 1.05;
       }
-      p {
-        margin: 0 0 16px;
+
+      .hero p {
         color: var(--muted);
-        font-size: 1.05rem;
+        font-size: 1.06rem;
         line-height: 1.7;
+        max-width: 800px;
+        margin: 0 0 16px;
       }
-      .badge {
-        display: inline-block;
-        margin-bottom: 18px;
-        padding: 6px 12px;
-        border-radius: 999px;
-        background: rgba(124,156,255,0.16);
-        color: var(--accent);
-        font-weight: 600;
-        font-size: 0.9rem;
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
       }
-      .cta {
+
+      .btn {
         display: inline-flex;
-        margin-top: 8px;
+        align-items: center;
+        justify-content: center;
         padding: 12px 18px;
         border-radius: 12px;
         text-decoration: none;
+        font-weight: 700;
+        border: 1px solid transparent;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        opacity: 0.95;
+      }
+
+      .btn-primary {
         background: var(--accent);
-        color: white;
+        color: #082f49;
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: var(--text);
+        border-color: var(--border);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      .card {
+        background: rgba(255,255,255,0.03);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 20px;
+      }
+
+      .card h2 {
+        margin: 0 0 8px;
+        font-size: 1.1rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .section {
+        margin-top: 28px;
+        background: rgba(17, 24, 39, 0.75);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .section h3 {
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 1.35rem;
+      }
+
+      .site-url {
+        display: inline-block;
+        margin-top: 8px;
+        padding: 10px 14px;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        color: #bae6fd;
+      }
+
+      ul {
+        margin: 12px 0 0;
+        padding-left: 20px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+        color: #bbf7d0;
         font-weight: 600;
       }
-      .footer {
-        margin-top: 28px;
-        font-size: 0.95rem;
-        color: var(--muted);
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--accent-2);
+        box-shadow: 0 0 14px rgba(34, 197, 94, 0.8);
       }
+
+      footer {
+        margin-top: 22px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
       code {
-        background: rgba(127,127,127,0.12);
+        background: rgba(255,255,255,0.08);
         padding: 2px 6px;
         border-radius: 6px;
       }
     </style>
   </head>
   <body>
-    <main>
-      <div class="badge">GitHub Pages</div>
-      <h1>Agent Cup Leader Dashboard</h1>
-      <p>
-        This repository is now ready to be published as a GitHub Pages site.
-      </p>
-      <p>
-        The default site URL will be <code>https://bhhalder.github.io/AgentCup/</code>
-        once Pages is enabled in the repository settings and the site is deployed from the
-        <code>main</code> branch root.
-      </p>
-      <a class="cta" href="https://github.com/bhhalder/AgentCup">View repository</a>
-      <div class="footer">
-        Replace this <code>index.html</code> with your real dashboard app when ready.
-      </div>
-    </main>
+    <div class="container">
+      <section class="hero">
+        <div class="eyebrow">Live on GitHub Pages</div>
+        <h1>Agent Cup Leader Dashboard</h1>
+        <p>
+          This repository now includes a deployable landing page for GitHub Pages.
+          Once GitHub Pages is enabled for the <code>main</code> branch root, this page becomes the public app entry point.
+        </p>
+        <p>
+          Use this page as your live dashboard placeholder, project homepage, or base shell while you build out the full application.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://bhhalder.github.io/AgentCup/">Open deployed app URL</a>
+          <a class="btn btn-secondary" href="https://github.com/bhhalder/AgentCup">Open repository</a>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h2>Repository</h2>
+            <p>bhhalder/AgentCup</p>
+          </article>
+          <article class="card">
+            <h2>Deployment Target</h2>
+            <p>GitHub Pages from <code>main</code> branch root</p>
+          </article>
+          <article class="card">
+            <h2>Default URL</h2>
+            <p><code>/AgentCup/</code> project site path</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>App URL</h3>
+        <div class="site-url">https://bhhalder.github.io/AgentCup/</div>
+        <div class="status"><span class="dot"></span> Ready to publish</div>
+        <ul>
+          <li>Go to <strong>Settings → Pages</strong> in the repository.</li>
+          <li>Select <strong>Deploy from a branch</strong>.</li>
+          <li>Choose <strong>main</strong> and <strong>/ (root)</strong>.</li>
+          <li>Save and wait a minute or two for publishing.</li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <h3>What this page does</h3>
+        <ul>
+          <li>Provides a public landing page for the project.</li>
+          <li>Confirms the expected GitHub Pages URL.</li>
+          <li>Gives you a clean base to expand into a real dashboard.</li>
+          <li>Keeps deployment simple with a single static <code>index.html</code>.</li>
+        </ul>
+      </section>
+
+      <footer>
+        Replace this static page with the full Agent Cup Leader Dashboard when your app is ready.
+      </footer>
+    </div>
   </body>
 </html>
