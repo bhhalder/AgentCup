@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgentCup — Hackathon Scoreboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <span class="trophy">🏆</span>
+        <div>
+          <h1 class="header-title">AgentCup</h1>
+          <p class="header-subtitle">Agent Hackathon Scoreboard</p>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="live-badge">● LIVE</span>
+        <span id="last-updated" class="last-updated">Updating…</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats bar -->
+  <section class="stats-bar" aria-label="Summary statistics">
+    <div class="stat-card">
+      <span class="stat-value" id="stat-teams">0</span>
+      <span class="stat-label">Teams</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="stat-submissions">0</span>
+      <span class="stat-label">Submissions</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="stat-top-score">0</span>
+      <span class="stat-label">Top Score</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-value" id="stat-avg-score">0</span>
+      <span class="stat-label">Avg Score</span>
+    </div>
+  </section>
+
+  <!-- Controls -->
+  <div class="controls">
+    <input
+      id="search-input"
+      class="search-input"
+      type="search"
+      placeholder="🔍  Search teams…"
+      aria-label="Search teams"
+    />
+    <div class="filter-buttons" role="group" aria-label="Filter by category">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="AI / ML">AI / ML</button>
+      <button class="filter-btn" data-filter="Automation">Automation</button>
+      <button class="filter-btn" data-filter="Productivity">Productivity</button>
+      <button class="filter-btn" data-filter="Security">Security</button>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="main">
+    <!-- Podium (top 3) -->
+    <section class="podium-section" aria-label="Top 3 teams">
+      <h2 class="section-title">Podium</h2>
+      <div class="podium" id="podium"></div>
+    </section>
+
+    <!-- Full leaderboard -->
+    <section class="leaderboard-section" aria-label="Full leaderboard">
+      <h2 class="section-title">Leaderboard</h2>
+      <div class="table-wrapper">
+        <table class="leaderboard-table" id="leaderboard-table">
+          <thead>
+            <tr>
+              <th class="col-rank" scope="col">Rank</th>
+              <th class="col-team" scope="col">Team</th>
+              <th class="col-category" scope="col">Category</th>
+              <th class="col-members" scope="col">Members</th>
+              <th class="col-score sortable active-sort" data-sort="score" scope="col">
+                Score <span class="sort-icon">▼</span>
+              </th>
+              <th class="col-change" scope="col">Δ</th>
+            </tr>
+          </thead>
+          <tbody id="leaderboard-body"></tbody>
+        </table>
+        <p id="no-results" class="no-results hidden">No teams match your search.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>AgentCup &copy; 2026 · Built with Agentic-Agile</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
