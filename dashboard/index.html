@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Cup — Leaderboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>🏆 Agent Cup</h1>
+      <p class="tagline">Hackathon Leaderboard</p>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="configure" role="tab" aria-selected="true">⚙️ Configure</button>
+    <button class="tab" data-tab="scores" role="tab" aria-selected="false">📊 Scores</button>
+    <button class="tab" data-tab="rankings" role="tab" aria-selected="false">🥇 Rankings</button>
+  </nav>
+
+  <main>
+    <!-- Configure Tab -->
+    <section id="tab-configure" class="tab-panel active" role="tabpanel">
+      <div class="panel-grid">
+
+        <!-- Teams -->
+        <div class="card">
+          <h2>Teams</h2>
+          <p class="hint">Add the participating teams. Names can be edited at any time.</p>
+          <div class="input-row">
+            <input id="teamInput" type="text" placeholder="Team name…" maxlength="50" />
+            <button id="addTeamBtn" class="btn-primary">Add Team</button>
+          </div>
+          <ul id="teamList" class="item-list"></ul>
+        </div>
+
+        <!-- Criteria -->
+        <div class="card">
+          <h2>Judging Criteria</h2>
+          <p class="hint">Define the criteria judges will use. Each criterion has equal weight unless you set a custom weight.</p>
+          <div class="input-row">
+            <input id="criteriaInput" type="text" placeholder="Criteria name…" maxlength="60" />
+            <input id="criteriaWeight" type="number" min="1" max="10" value="1" title="Weight (1–10)" class="weight-input" />
+            <button id="addCriteriaBtn" class="btn-primary">Add</button>
+          </div>
+          <ul id="criteriaList" class="item-list"></ul>
+        </div>
+
+      </div>
+
+      <div class="card mt">
+        <h2>Score Range</h2>
+        <p class="hint">Set the minimum and maximum score judges can give for each criterion.</p>
+        <div class="score-range-row">
+          <label>Min <input id="scoreMin" type="number" value="0" min="0" max="99" /></label>
+          <label>Max <input id="scoreMax" type="number" value="10" min="1" max="100" /></label>
+          <button id="saveRangeBtn" class="btn-secondary">Save</button>
+          <span id="rangeMsg" class="inline-msg"></span>
+        </div>
+      </div>
+
+      <div class="card mt center">
+        <button id="resetBtn" class="btn-danger">🗑 Reset All Data</button>
+        <p class="hint">Clears all teams, criteria, and scores.</p>
+      </div>
+    </section>
+
+    <!-- Scores Tab -->
+    <section id="tab-scores" class="tab-panel" role="tabpanel">
+      <div class="card">
+        <h2>Enter Scores</h2>
+        <p class="hint">Enter the score each team received for every criterion. Scores are saved automatically.</p>
+        <div id="scoreTableWrapper">
+          <p class="empty-state">Add teams and criteria in the <strong>Configure</strong> tab first.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rankings Tab -->
+    <section id="tab-rankings" class="tab-panel" role="tabpanel">
+
+      <div class="card">
+        <h2>🥇 Overall Rankings</h2>
+        <p class="hint">Weighted total across all criteria. Ties broken alphabetically.</p>
+        <div id="overallRanking">
+          <p class="empty-state">No data yet. Add teams, criteria, and scores first.</p>
+        </div>
+      </div>
+
+      <div id="criteriaRankingsContainer" class="mt"></div>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>Agent Cup · Powered by Agentic-Agile</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
