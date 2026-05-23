@@ -81,7 +81,7 @@ function addTeam() {
   }
   const team = { id: nextId(), name };
   state.teams.push(team);
-  // Initialise score slots
+  // Initialize score slots
   state.criteria.forEach(c => {
     if (!state.scores[team.id]) state.scores[team.id] = {};
     state.scores[team.id][c.id] = null;
@@ -137,7 +137,7 @@ function addCriteria() {
   }
   const crit = { id: nextId(), name, weight };
   state.criteria.push(crit);
-  // Initialise score slots for all teams
+  // Initialize score slots for all teams
   state.teams.forEach(t => {
     if (!state.scores[t.id]) state.scores[t.id] = {};
     state.scores[t.id][crit.id] = null;
